@@ -26,7 +26,7 @@ const message = 'must be between 6-16 characters, ' +
       password
     });
 
-    export const signIp = Joi.object().keys({
+    export const signIn = Joi.object().keys({
       email,
       password
     })

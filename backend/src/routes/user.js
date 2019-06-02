@@ -4,7 +4,7 @@ import User from '../models/user';
 import { signUp } from '../validations/user';
 
 const userRoutes = express.Router();
-userRouter.post("", async (req, res) => {
+userRoutes.post("", async (req, res) => {
   try {
     const { username, email, password } = req.body
     await Joi.validate({ username, email, password }, signUp);

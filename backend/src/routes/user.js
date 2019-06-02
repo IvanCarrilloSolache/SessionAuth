@@ -16,6 +16,7 @@ userRoutes.post("", async (req, res) => {
 
     req.session.user =sessionUser;
     res.send(sessionUser); 
+    console.log(req.session)
   } catch (err) {
     res.status(400).send(parseError(err));
   }

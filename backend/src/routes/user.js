@@ -14,12 +14,12 @@ userRoutes.post("", async (req, res) => {
     const sessionUser = sessionizeUser(newUser);
     await newUser.save();
 
-    req.session.user = sessionUser;
+    req.session.user =sessionUser;
     res.send(sessionUser); 
   } catch (err) {
     res.status(400).send(parseError(err));
   }
-})
+});
 
 userRoutes.post("", (req, res) => {
   res.send(req.body);

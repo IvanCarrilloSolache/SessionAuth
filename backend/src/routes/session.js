@@ -23,3 +23,25 @@ sessionRouter.post("", async (req, res) => {
     res.status(401).send(parseError(err));
   }
 });
+
+sessionRouter.delete("", ({ session }, res) => {
+  try {
+    const user = session.user;
+    if (user) {
+      session.destroy(err => {
+        if (err) throw (err);
+        res.clearCookie(SESS_NAME);
+        res.send(user);
+      });
+    } else {
+      throw new Error('Something went wrong');
+    }
+  } catch (err) {
+    res.status(422).send(parseError(err));
+  }
+});
+
+sessionRouter.get("", ({ session: { user }}, res) => {
+  res.send({ user });
+});
+export default sessionRouter;
